@@ -12,7 +12,7 @@ function Categories({ items, onClickItem }) {
           onClick={() => onSelectItem(null)}
         >Все
         </li>
-        {
+        {items &&
           items.map((name, index) => (
             <li
               className={`categories__item ${activeItem === index ? 'active' : ''}`}
