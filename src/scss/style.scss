@@ -162,12 +162,18 @@
     }
     &__arrow{
         margin-right: 7px;
+        transform: rotate(180deg);
+        &.rotated{
+            transform: rotate(0deg);
+        }
     }
     &__item{
         margin-left: 5px;
         color: $bg;
         border-bottom: 1px dashed $bg;
         cursor: pointer;
+        min-width: 105px;
+        text-align: center;
     }
     &__popup{
         position: absolute;
