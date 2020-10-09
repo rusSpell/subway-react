@@ -12,11 +12,13 @@ function Header() {
     <header className="header">
       <div className="container">
         <div className="header__inner">
-          <Link to="/">
-            <div className="header__logo">
-              <a href="./" className="header__link"><img src={logo} alt="Subway" /></a>
-            </div>
-          </Link>
+
+          <div className="header__logo">
+            <Link to="/">
+              <div href="./" className="header__link"><img src={logo} alt="Subway" /></div>
+            </Link>
+          </div>
+
 
           <div className="header__cart">
             <Link to="/cart">
