@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 function SandwichBlock({ name, imageUrl, price, types, sizes }) {
     const sizesNames = ['15 см.', '30 см.']
@@ -61,4 +62,17 @@ function SandwichBlock({ name, imageUrl, price, types, sizes }) {
     )
 }
 
+SandwichBlock.propTypes = {
+    name: PropTypes.string,
+    imageUrl: PropTypes.string,
+    price: PropTypes.number,
+    types: PropTypes.arrayOf(PropTypes.number),
+    sizes: PropTypes.arrayOf(PropTypes.number),
+};
+SandwichBlock.defaultProps = {
+    name: '-----',
+    price: 0,
+    types: [],
+    sizes: [],
+};
 export default SandwichBlock

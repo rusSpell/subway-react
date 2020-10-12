@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import { Header, Footer } from './components';
 import { Home, Cart } from './pages';
@@ -11,12 +12,13 @@ function App() {
   const [sandwiches, setSandwiches] = React.useState([])
 
   React.useEffect(() => {
-    fetch('http://localhost:3000/api.json').then((resp) => resp.json()).then(json => {
-      setSandwiches(json.sandwiches);
-    });
+    axios.get('http://localhost:3000/api.json').then(({ data }) => {
+      setSandwiches(data.sandwiches);
+    })
+    /*  fetch('http://localhost:3000/api.json').then((resp) => resp.json()).then(json => {
+          setSandwiches(json.sandwiches);
+        }); */
   }, [])
-
-  console.log(sandwiches);
 
   return (
 

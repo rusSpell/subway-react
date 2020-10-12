@@ -3,7 +3,7 @@
         {
             "id": 0,
             "name": "Сабвэй Мелт",
-            "imageUrl": "https://www.subway.ru/upload/iblock/0e0/sabvey_melt_straight_6_inch_lager.jpg",
+            "imageUrl": "/images/melt.jpg",
             "types": [
                 0,
                 1,
@@ -20,14 +20,12 @@
         {
             "id": 1,
             "name": "Итальянский БМТ",
-            "imageUrl": "https://www.subway.ru/upload/iblock/0cb/italyanskiy_bmt_straight_6_inch_lager.jpg",
+            "imageUrl": "/images/ibmt.jpg",
             "types": [
-                
                 1,
                 2
             ],
             "sizes": [
-                
                 1
             ],
             "price": 160,
@@ -37,7 +35,7 @@
         {
             "id": 2,
             "name": "Лосось Крем Чиз",
-            "imageUrl": "https://www.subway.ru/upload/iblock/1fa/11_lososkremchiz_front_det.jpg",
+            "imageUrl": "/images/kremchiz.jpg",
             "types": [
                 0,
                 1
@@ -53,7 +51,7 @@
         {
             "id": 3,
             "name": "Грибной",
-            "imageUrl": "https://www.subway.ru/upload/iblock/8c9/01_gribnoy_fin.jpg",
+            "imageUrl": "/images/grib.jpg",
             "types": [
                 0,
                 1,

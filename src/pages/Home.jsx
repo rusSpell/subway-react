@@ -23,7 +23,7 @@ function Home({ items }) {
       <div className="content__items">
         {
           items.map((obj) => (
-          <SandwichBlock key={obj.id} {...obj}/>
+          <SandwichBlock key={obj.id} {...obj} />
           ))
         }
 
