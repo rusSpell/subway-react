@@ -13,9 +13,9 @@ function Home({ items }) {
         ]} />
 
         <Sort items={[
-          'популярности',
-          'цене',
-          'алфавиту'
+          { name: 'популярности', type: 'popular' }, 
+          { name: 'цене', type: 'price' }, 
+          { name: 'алфавиту', type: 'alphabet' }
         ]} />
 
       </div>
@@ -23,7 +23,7 @@ function Home({ items }) {
       <div className="content__items">
         {
           items.map((obj) => (
-          <SandwichBlock key={obj.id} {...obj} />
+            <SandwichBlock key={obj.id} {...obj} />
           ))
         }
 
