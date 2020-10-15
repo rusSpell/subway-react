@@ -1,30 +1,53 @@
 import React from 'react';
 import axios from 'axios';
 /* import store from './redux/store' */
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux';
 
 import { Header, Footer } from './components';
 import { Home, Cart } from './pages';
 import { Route } from 'react-router-dom';
-import {setProducts as setProductsAction} from './redux/actions/products.js';
+import { setProducts } from './redux/actions/products.js';
 
 
 /* import './App.css'; */
 
-/* function App() {
+function App() {
+  const dispatch = useDispatch();
+
+
   React.useEffect(() => {
-    axios.get('http://localhost:3000/api.json').then(({ data }) => {
-      setSandwiches(data.sandwiches);
-    })
-      fetch('http://localhost:3000/api.json').then((resp) => resp.json()).then(json => {
-          setSandwiches(json.sandwiches);
-        }); 
+    axios.get('http://localhost:3001/sandwiches').then(({ data }) => {
+      dispatch(setProducts(data));
+    });
   }, [])
+  return (
+    <div className="wrapper">
+      <Header />
+      <div className="content">
+        <Route exact path="/" component={Home} />
+        <Route exact path="/cart" component={Cart} />
+      </div>
+      <Footer />
+    </div>
+  );
+}
+export default App;
 
-  return 
-} */
+/* export default connect(
+  (state) => {
+    return {
+      items: state.products.items,
+      filters: state.filters,
+    };
+  },
+  (dispatch) => {
+    return {
+      setProducts: (items) => dispatch(setProducts(items)),
+    };
+  },
+)(App); */
 
-class App extends React.Component {
+/* class App extends React.Component {
   componentDidMount(){
     axios.get('http://localhost:3000/api.json').then(({ data }) => {
       this.props.setProducts(data.sandwiches);
@@ -41,7 +64,7 @@ class App extends React.Component {
         </div>
         <Footer />
       </div>
-  
+
     );
   }
 }
@@ -57,7 +80,5 @@ const mapDispatchToProps = dispatch => {
   }
 };
 
-
-
-
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+ */

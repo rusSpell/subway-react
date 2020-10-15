@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Sort({ items }) {
+const Sort = React.memo(function Sort({ items }) {
   const [showPopup, setShowPopup] = React.useState(false);
   const [activeItem, setActiveItem] = React.useState(0);
   const sortRef = React.useRef();
@@ -15,9 +15,9 @@ function Sort({ items }) {
     setShowPopup(false);
   };
 
-  
 
-  
+
+
   const outsideClick = (e) => {
     if (!e.path.includes(sortRef.current)) {
       setShowPopup(false);
@@ -40,7 +40,7 @@ function Sort({ items }) {
               fill="#2C2C2C"></path>
           </svg>
           <b>Сортировка по:</b>
-  <span onClick={togglePopup} className="sort__item">{acitveSort}</span>
+          <span onClick={togglePopup} className="sort__item">{acitveSort}</span>
         </div>
         {showPopup && <div className="sort__popup">
           <ul>
@@ -60,6 +60,6 @@ function Sort({ items }) {
     </div>
 
   )
-}
+})
 
 export default Sort
