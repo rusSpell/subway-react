@@ -1,17 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+
 function SandwichBlock({ name, imageUrl, price, types, sizes }) {
+
     const sizesNames = ['15 см.', '30 см.']
     const [activeSize, setActiveSize] = React.useState(types[0]);
     const onSelectSize = (index) => {
         setActiveSize(index);
     };
+
     const typesNames = ['белый хлеб', 'серый хлеб', 'ржаной хлеб']
     const [activeType, setActiveType] = React.useState(types[0]);
     const onSelectType = (index) => {
         setActiveType(index);
     };
+
     return (
         <div className="sandwich">
             <img src={imageUrl} alt="" className="sandwich__pic" />
@@ -28,7 +32,7 @@ function SandwichBlock({ name, imageUrl, price, types, sizes }) {
                                 `
                             }
 
-                                   
+
                         >
                             {size}
                         </li>)}

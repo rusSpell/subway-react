@@ -1,9 +1,10 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 
-import { Categories, Sort, SandwichBlock } from '../components';
+import { Categories, Sort, SandwichBlock, PreLoader } from '../components';
 
 import { setCategory } from '../redux/actions/filters.js';
+import { fetchProducts } from '../redux/actions/products.js';
 
 const categoryNames = [
   'Сэндвичи',
@@ -20,6 +21,14 @@ const sortItems = [
 function Home() {
   const dispatch = useDispatch();
   const items = useSelector(({ products }) => products.items);
+  const isLoaded = useSelector(({ products }) => products.isLoaded);
+
+  React.useEffect(() => {
+
+    dispatch(fetchProducts())
+
+  }, []);
+
   const onSelectCategory = React.useCallback((index) => {
     dispatch(setCategory(index));
   }, []);
@@ -35,9 +44,9 @@ function Home() {
       <h2 className="content__title">Сэндвичи</h2>
       <div className="content__items">
         {
-          items && items.map((obj) => (
-            <SandwichBlock key={obj.id} {...obj} />
-          ))
+          isLoaded
+            ? items.map((obj) => (<SandwichBlock key={obj.id} {...obj} />))
+            : Array(2).fill(<PreLoader />)
         }
 
       </div>
