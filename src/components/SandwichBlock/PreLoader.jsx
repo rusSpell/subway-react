@@ -4,6 +4,7 @@ import ContentLoader from "react-content-loader"
 function PreLoader() {
     return (
         <ContentLoader
+            className="sandwich sandwich__preloader"
             speed={2}
             width={380}
             height={456}

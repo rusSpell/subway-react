@@ -4,7 +4,7 @@ import React from 'react';
 import { Header, Footer } from './components';
 import { Home, Cart } from './pages';
 import { Route } from 'react-router-dom';
-import { fetchProducts } from './redux/actions/products.js';
+/* import { fetchProducts } from './redux/actions/products.js'; */
 
 /* import './App.css'; */
 

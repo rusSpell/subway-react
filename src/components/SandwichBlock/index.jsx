@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 
-function SandwichBlock({ name, imageUrl, price, types, sizes }) {
+function SandwichBlock({ name, imageUrl, price, types, sizes, description }) {
 
     const sizesNames = ['15 см.', '30 см.']
     const [activeSize, setActiveSize] = React.useState(types[0]);
@@ -21,36 +21,48 @@ function SandwichBlock({ name, imageUrl, price, types, sizes }) {
             <img src={imageUrl} alt="" className="sandwich__pic" />
             <h4 className="sandwich__title">{name}</h4>
             <div className="sandwich__selector">
-                <ul className="sandwich__size">
-                    {sizesNames.map((size, index) =>
-                        <li key={size}
-                            onClick={() => onSelectSize(index)}
-                            className={
-                                `sandwich__size-item
+
+                {types.length > 0 &&
+                    <>
+                        <ul className="sandwich__size">
+                            {sizesNames.map((size, index) =>
+                                <li key={size}
+                                    onClick={() => onSelectSize(index)}
+                                    className={
+                                        `sandwich__size-item
                                 ${activeSize === index ? 'active' : ''} 
                                 ${!sizes.includes(index) ? 'disabled' : ''}
                                 `
-                            }
-
-
-                        >
-                            {size}
-                        </li>)}
-                </ul>
-                <ul className="sandwich__bread">
-                    {typesNames.map((type, index) =>
-                        <li key={type}
-                            onClick={() => onSelectType(index)}
-                            className={
-                                `sandwich__bread-item
+                                    }
+                                >
+                                    {size}
+                                </li>)}
+                        </ul>
+                        <ul className="sandwich__bread">
+                            {typesNames.map((type, index) =>
+                                <li key={type}
+                                    onClick={() => onSelectType(index)}
+                                    className={
+                                        `sandwich__bread-item
                                 ${activeType === index ? 'active' : ''} 
                                 ${!types.includes(index) ? 'disabled' : ''}
                                 `
-                            }
-                        >
-                            {type}
-                        </li>)}
-                </ul>
+                                    }
+                                >
+                                    {type}
+                                </li>)}
+                        </ul>
+                    </>
+                }
+
+                {!types.length &&
+
+                    <p className="sandwich__description">{description}</p>
+
+                }
+
+
+
             </div>
             <div className="sandwich__add">
                 <p className="sandwich__price">{price} ₽</p>

@@ -15,7 +15,7 @@
             ],
             "price": 150,
             "category": 0,
-            "rating": 4
+            "popular": 4
         },
         {
             "id": 1,
@@ -30,7 +30,7 @@
             ],
             "price": 160,
             "category": 0,
-            "rating": 2
+            "popular": 2
         },
         {
             "id": 2,
@@ -46,7 +46,7 @@
             ],
             "price": 180,
             "category": 0,
-            "rating": 3
+            "popular": 3
         },
         {
             "id": 3,
@@ -62,7 +62,43 @@
             ],
             "price": 150,
             "category": 0,
-            "rating": 7
+            "popular": 7
+        },
+        {
+            "id": 4,
+            "name": "Салат с Тунцом",
+            "imageUrl": "/images/salat.jpg",
+            "description": "Салат с лососем, листьями рукколы, луком и помидором",
+            "price": 250,
+            "category": 1,
+            "popular": 6
+        },
+        {
+            "id": 5,
+            "name": "Салат Курица Терияки",
+            "imageUrl": "/images/salat.jpg",
+            "description": "Салат с лососем, листьями рукколы, луком и помидором",
+            "price": 210,
+            "category": 1,
+            "popular": 7
+        },        
+        {
+            "id": 6,
+            "name": "Салат Итальянский БМТ",
+            "imageUrl": "/images/salat.jpg",
+            "description": "Салат с лососем, листьями рукколы, луком и помидором",
+            "price": 230,
+            "category": 1,
+            "popular": 3
+        }, 
+        {
+            "id": 7,
+            "name": "Ролл ветчина и сыр",
+            "imageUrl": "/images/roll.jpg",
+            "description": "Ролл с ветчиной, листьями рукколы, сыром и помидором",
+            "price": 190,
+            "category": 1,
+            "popular": 4
         }
     ]
 }

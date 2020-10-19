@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { Categories, Sort, SandwichBlock, PreLoader } from '../components';
 
-import { setCategory } from '../redux/actions/filters.js';
+import { setCategory, setSortBy } from '../redux/actions/filters.js';
 import { fetchProducts } from '../redux/actions/products.js';
 
 const categoryNames = [
@@ -13,32 +13,44 @@ const categoryNames = [
   'Десерты и напитки'
 ];
 const sortItems = [
-  { name: 'популярности', type: 'popular' },
-  { name: 'цене', type: 'price' },
-  { name: 'алфавиту', type: 'alphabet' },
+  { name: 'популярности', type: 'popular', order: 'desc' },
+  { name: 'цене', type: 'price', order: 'desc' },
+  { name: 'алфавиту', type: 'name', order: 'asc' },
 ];
 
 function Home() {
   const dispatch = useDispatch();
   const items = useSelector(({ products }) => products.items);
   const isLoaded = useSelector(({ products }) => products.isLoaded);
+  const { category, sortBy } = useSelector(({ filters }) => filters)
+
 
   React.useEffect(() => {
-
-    dispatch(fetchProducts())
-
-  }, []);
+    dispatch(fetchProducts(category, sortBy))
+  }, [category, sortBy]);
 
   const onSelectCategory = React.useCallback((index) => {
     dispatch(setCategory(index));
   }, []);
+
+  const onSelectSortType = React.useCallback((type) => {
+    dispatch(setSortBy(type));
+  }, []);
+
   return (
     <div className="container">
       <div className="content__top">
-        <Categories onClickItem={onSelectCategory}
-          items={categoryNames} />
+        <Categories
+          activeCategory={category}
+          onClickCategory={onSelectCategory}
+          items={categoryNames}
+        />
 
-        <Sort items={sortItems} />
+        <Sort
+          activeSortType={sortBy.type}
+          items={sortItems}
+          onClickSortType={onSelectSortType}
+        />
 
       </div>
       <h2 className="content__title">Сэндвичи</h2>
@@ -46,7 +58,7 @@ function Home() {
         {
           isLoaded
             ? items.map((obj) => (<SandwichBlock key={obj.id} {...obj} />))
-            : Array(2).fill(<PreLoader />)
+            : [0,0,0].map((_, index) => <PreLoader key={index} />)
         }
 
       </div>
