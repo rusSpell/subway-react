@@ -5,6 +5,7 @@ import { Categories, Sort, SandwichBlock, PreLoader } from '../components';
 
 import { setCategory, setSortBy } from '../redux/actions/filters.js';
 import { fetchProducts } from '../redux/actions/products.js';
+import { addProductsToCart } from '../redux/actions/cart.js';
 
 const categoryNames = [
   'Сэндвичи',
@@ -37,6 +38,10 @@ function Home() {
     dispatch(setSortBy(type));
   }, []);
 
+  const handleAddProductsToCart = obj => {
+    dispatch(addProductsToCart(obj))
+  }
+
   return (
     <div className="container">
       <div className="content__top">
@@ -57,8 +62,12 @@ function Home() {
       <div className="content__items">
         {
           isLoaded
-            ? items.map((obj) => (<SandwichBlock key={obj.id} {...obj} />))
-            : [0,0,0].map((_, index) => <PreLoader key={index} />)
+            ? items.map((obj) => (
+              <SandwichBlock
+                onClickAddProducts={handleAddProductsToCart}
+                key={obj.id} {...obj} />
+            ))
+            : [0, 0, 0].map((_, index) => <PreLoader key={index} />)
         }
 
       </div>

@@ -1,28 +1,30 @@
 const initialState = {
     items: {},
     totalPrice: 0,
-    itemsCount: 0
+    totalCount: 0
 }
 
-/* const productsi = (state = initialState, action) => {
-
+const cart = (state = initialState, action) => {
     switch (action.type) {
-        case 'SET_PRODUCTS':
+        case 'Add_PRODUCTS_CART': {
+            const newItems = {
+                ...state,
+                items: {
+                    ...state.items,
+                    [action.payload.id]: !state.items[action.payload.id]
+                        ? [action.payload]
+                        : [...state.items[action.payload.id], action.payload]
+                }
+            }
             return {
                 ...state,
-                items: action.payload,
-                isLoaded: true,
-            }
-
-        case 'SET_LOADED':
-            return {
-                ...state,
-                isLoaded: action.payload,
-            }
+                items: newItems,
+                totalCount: [].concat.apply([], Object.values(newItems)).length
+            };
+        }
 
         default:
             return state;
     }
-
-}; */
+};
 export default cart;

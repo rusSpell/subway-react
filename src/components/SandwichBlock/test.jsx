@@ -5,8 +5,8 @@ import Button from '../Button.jsx'
 
 function SandwichBlock({ id, name, imageUrl, price, types, sizes, description, onClickAddProducts }) {
 
-    const sizesNames = ['15', '30']
-    const [activeSize, setActiveSize] = React.useState(sizes[0]);
+    const sizesNames = [15, 30]
+    const [activeSize, setActiveSize] = React.useState(0);
     const onSelectSize = (index) => {
         setActiveSize(index);
     };
@@ -44,7 +44,7 @@ function SandwichBlock({ id, name, imageUrl, price, types, sizes, description, o
                                     className={
                                         `sandwich__size-item
                                 ${activeSize === index ? 'active' : ''} 
-                                ${!sizes.includes(index) ? 'disabled' : ''}
+                                ${!sizes.includes(size) ? 'disabled' : ''}
                                 `
                                     }
                                 >
