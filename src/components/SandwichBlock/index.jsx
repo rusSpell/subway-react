@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Button from '../Button.jsx'
 
 
-function SandwichBlock({ id, name, imageUrl, price, types, sizes, description, onClickAddProducts }) {
+function SandwichBlock({ id, name, imageUrl, price, types, sizes, description, onClickAddProducts, addedCount }) {
 
     const sizesNames = ['15', '30']
     const [activeSize, setActiveSize] = React.useState(sizes[0]);
@@ -87,7 +87,7 @@ function SandwichBlock({ id, name, imageUrl, price, types, sizes, description, o
                         <path className="button-plus-svg" d="M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z" fill="white"></path>
                     </svg>
                     <span>Добавить</span>
-                    <i className="button--info">2</i>
+                    {addedCount&& <i className="button--info">{addedCount}</i>}
                 </Button>
             </div>
         </div>
@@ -101,6 +101,7 @@ SandwichBlock.propTypes = {
     types: PropTypes.arrayOf(PropTypes.number),
     sizes: PropTypes.arrayOf(PropTypes.number),
     onAddProducts: PropTypes.func,
+    addedCount: PropTypes.number
 };
 SandwichBlock.defaultProps = {
     name: '-----',

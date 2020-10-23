@@ -6,6 +6,7 @@ import { Categories, Sort, SandwichBlock, PreLoader } from '../components';
 import { setCategory, setSortBy } from '../redux/actions/filters.js';
 import { fetchProducts } from '../redux/actions/products.js';
 import { addProductsToCart } from '../redux/actions/cart.js';
+import cart from '../redux/reducers/cart';
 
 const categoryNames = [
   'Сэндвичи',
@@ -22,6 +23,7 @@ const sortItems = [
 function Home() {
   const dispatch = useDispatch();
   const items = useSelector(({ products }) => products.items);
+  const cartItems = useSelector(({ cart }) => cart.items);
   const isLoaded = useSelector(({ products }) => products.isLoaded);
   const { category, sortBy } = useSelector(({ filters }) => filters)
 
@@ -65,7 +67,10 @@ function Home() {
             ? items.map((obj) => (
               <SandwichBlock
                 onClickAddProducts={handleAddProductsToCart}
-                key={obj.id} {...obj} />
+                key={obj.id} 
+                addedCount={cartItems[obj.id] && cartItems[obj.id].length}
+                {...obj} 
+              />
             ))
             : [0, 0, 0].map((_, index) => <PreLoader key={index} />)
         }
