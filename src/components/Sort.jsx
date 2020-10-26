@@ -15,9 +15,6 @@ const Sort = React.memo(function Sort({ items, activeSortType, onClickSortType }
     setShowPopup(false);
   };
 
-
-
-
   const outsideClick = (event) => {
     const path = event.path || (event.composedPath && event.composedPath());
     if (!path.includes(sortRef.current)) {
@@ -28,7 +25,6 @@ const Sort = React.memo(function Sort({ items, activeSortType, onClickSortType }
   React.useEffect(() => {
     document.body.addEventListener('click', outsideClick);
   }, []);
-
 
   return (
     <div ref={sortRef}>

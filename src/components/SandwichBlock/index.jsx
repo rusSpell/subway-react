@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Button from '../Button.jsx'
 
+import Button from '../Button.jsx'
 
 function SandwichBlock({ id, name, imageUrl, price, types, sizes, description, onClickAddProducts, addedCount }) {
 
@@ -24,7 +24,8 @@ function SandwichBlock({ id, name, imageUrl, price, types, sizes, description, o
             imageUrl,
             price,
             size: sizesNames[activeSize],
-            type: typesNames[activeType]
+            type: typesNames[activeType],
+            description
         };
         onClickAddProducts(obj)
     };

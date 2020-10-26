@@ -5,9 +5,6 @@ import { useSelector } from 'react-redux'
 import logo from '../assets/images/logo.svg';
 
 import Button from './Button';
-import cart from '../redux/reducers/cart';
-
-
 
 function Footer() {
   const { totalPrice, totalCount } = useSelector(({ cart }) => cart );
