@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { CartItem } from '../components'
-import { clearCart } from '../redux/actions/cart'
+import { clearCart, removeCartItem } from '../redux/actions/cart'
 
 import shoppingCartEmpty from '../assets/images/shopping-cart-empty.svg'
 
@@ -15,6 +15,9 @@ function Cart() {
   });
   const onClearCart = () => {
     if (window.confirm('Вы действительно хотите очистить корзину?')) dispatch(clearCart())
+  }
+  const onRemoveItem = (id) => {
+    if (window.confirm('Вы действительно хотите удалить эту позицию из корзины?')) dispatch(removeCartItem(id))
   }
 
   return (
@@ -70,12 +73,14 @@ c-3.392,15.226-16.319,26.457-31.869,27.69l-217.339,22.465L106.58,88.053l320.261,
               {
                 addedProducts.map(obj =>
                   <CartItem
+                    id={obj.id}
                     name={obj.name}
                     type={obj.type}
                     size={obj.size}
                     description={obj.description}
                     totalPrice={items[obj.id].totalPrice}
                     totalCount={items[obj.id].items.length}
+                    onRemove={onRemoveItem}
                   />)
               }
             </div>
