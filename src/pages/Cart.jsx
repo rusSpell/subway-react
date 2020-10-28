@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { CartItem } from '../components'
-import { clearCart, removeCartItem } from '../redux/actions/cart'
+import { clearCart, removeCartItem, incCartItem, decCartItem } from '../redux/actions/cart'
 
 import shoppingCartEmpty from '../assets/images/shopping-cart-empty.svg'
 
@@ -18,6 +18,12 @@ function Cart() {
   }
   const onRemoveItem = (id) => {
     if (window.confirm('Вы действительно хотите удалить эту позицию из корзины?')) dispatch(removeCartItem(id))
+  }
+  const onIncItem = (id) => {
+    dispatch(incCartItem(id))
+  }
+  const onDecItem = (id) => {
+    dispatch(decCartItem(id))
   }
 
   return (
@@ -55,15 +61,15 @@ c-3.392,15.226-16.319,26.457-31.869,27.69l-217.339,22.465L106.58,88.053l320.261,
               <div className="cart__clear" onClick={onClearCart}>
                 <svg className="cart__clear-pic" width="20" height="20" viewBox="0 0 20 20" fill="none"
                   xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2.5 5H4.16667H17.5" stroke="#B6B6B6" stroke-width="1.2" stroke-linecap="round"
-                    stroke-linejoin="round"></path>
+                  <path d="M2.5 5H4.16667H17.5" stroke="#B6B6B6" strokeWidth="1.2" strokeLinecap="round"
+                    strokeLinejoin="round"></path>
                   <path
                     d="M6.66663 5.00001V3.33334C6.66663 2.89131 6.84222 2.46739 7.15478 2.15483C7.46734 1.84227 7.89127 1.66667 8.33329 1.66667H11.6666C12.1087 1.66667 12.5326 1.84227 12.8451 2.15483C13.1577 2.46739 13.3333 2.89131 13.3333 3.33334V5.00001M15.8333 5.00001V16.6667C15.8333 17.1087 15.6577 17.5326 15.3451 17.8452C15.0326 18.1577 14.6087 18.3333 14.1666 18.3333H5.83329C5.39127 18.3333 4.96734 18.1577 4.65478 17.8452C4.34222 17.5326 4.16663 17.1087 4.16663 16.6667V5.00001H15.8333Z"
-                    stroke="#B6B6B6" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
-                  <path d="M8.33337 9.16667V14.1667" stroke="#B6B6B6" stroke-width="1.2" stroke-linecap="round"
-                    stroke-linejoin="round"></path>
-                  <path d="M11.6666 9.16667V14.1667" stroke="#B6B6B6" stroke-width="1.2" stroke-linecap="round"
-                    stroke-linejoin="round"></path>
+                    stroke="#B6B6B6" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"></path>
+                  <path d="M8.33337 9.16667V14.1667" stroke="#B6B6B6" strokeWidth="1.2" strokeLinecap="round"
+                    strokeLinejoin="round"></path>
+                  <path d="M11.6666 9.16667V14.1667" stroke="#B6B6B6" strokeWidth="1.2" strokeLinecap="round"
+                    strokeLinejoin="round"></path>
                 </svg>
               Очистить корзину
           </div>
@@ -76,11 +82,14 @@ c-3.392,15.226-16.319,26.457-31.869,27.69l-217.339,22.465L106.58,88.053l320.261,
                     id={obj.id}
                     name={obj.name}
                     type={obj.type}
+                    imageUrl={obj.imageUrl}
                     size={obj.size}
                     description={obj.description}
                     totalPrice={items[obj.id].totalPrice}
                     totalCount={items[obj.id].items.length}
                     onRemove={onRemoveItem}
+                    onInc={onIncItem}
+                    onDec={onDecItem}
                   />)
               }
             </div>
@@ -109,7 +118,7 @@ L143.492,221.863z" />
 
           </div> :
           <div className="cart__empty">
-            <img src={shoppingCartEmpty} alt="Корзина пуста" class="cart__empty-pic" />
+            <img src={shoppingCartEmpty} alt="Корзина пуста" className="cart__empty-pic" />
             <p className="cart__empty-text">Корзина пуста и ждет товаров!</p>
             <Link to="/" className="button button--cart button--width" href="./">За покупками</Link>
           </div>

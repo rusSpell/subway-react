@@ -12,3 +12,13 @@ export const removeCartItem = (id) => ({
     payload: id
 });
 
+export const incCartItem = (id) => ({
+    type: 'INCREMENT_CART_ITEM',
+    payload: id
+});
+
+export const decCartItem = (id) => ({
+    type: 'DECREMENT_CART_ITEM',
+    payload: id
+});
+
