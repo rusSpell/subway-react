@@ -6,6 +6,7 @@ import { CartItem } from '../components'
 import { clearCart, removeCartItem, incCartItem, decCartItem } from '../redux/actions/cart'
 
 import shoppingCartEmpty from '../assets/images/shopping-cart-empty.svg'
+import Button from '../components/Button'
 
 function Cart() {
   const dispatch = useDispatch()
@@ -24,6 +25,9 @@ function Cart() {
   }
   const onDecItem = (id) => {
     dispatch(decCartItem(id))
+  }
+  const onClickOrder = () => {
+    console.log('Ваш заказ', items);
   }
 
   return (
@@ -79,6 +83,7 @@ c-3.392,15.226-16.319,26.457-31.869,27.69l-217.339,22.465L106.58,88.053l320.261,
               {
                 addedProducts.map(obj =>
                   <CartItem
+                    key={obj.id}
                     id={obj.id}
                     name={obj.name}
                     type={obj.type}
@@ -112,7 +117,7 @@ L143.492,221.863z" />
                   </svg>
                   <span>Вернуться назад</span>
                 </Link>
-                <a className="button button--cart button--width">Оплатить сейчас</a>
+                <Button onClick={onClickOrder} className="button--cart button--width">Оплатить сейчас</Button>
               </div>
             </div>
 
