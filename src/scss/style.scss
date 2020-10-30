@@ -108,6 +108,9 @@
         padding-left: 10px;
     }
 }
+.footer {
+    border-bottom: none;
+}
 .content{
     padding: 40px 0;
     &__top{
@@ -220,6 +223,7 @@
         background-color: #f3f3f3;
         border-radius: 10px;
         padding: 6px;
+        min-height: 81px;
     }
     &__description{
         margin: 0.8em;
